@@ -45,6 +45,11 @@ flutter:
     - assets/images/bg.jpg
     - assets/images/ISOTIPO.png
     - assets/images/logo.png
+    - assets/images/btc.png
+    - assets/images/ltc.png
+    - assets/images/onx.png
+
+
   fonts:
     - family: FontLight
       fonts:
