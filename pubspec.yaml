@@ -48,6 +48,7 @@ flutter:
     - assets/images/btc.png
     - assets/images/ltc.png
     - assets/images/onx.png
+    - assets/images/dash.png
 
 
   fonts:

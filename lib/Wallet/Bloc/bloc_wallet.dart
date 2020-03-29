@@ -9,7 +9,7 @@ class BlocWallet implements Bloc {
 
   Stream<int> get minhaStream => _blocController.stream;
 
-  String mnemonic() {
+  static String mnemonic() {
 
     return bip39.generateMnemonic();
   }
