@@ -70,3 +70,16 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  assets:
+    - assets/images/bg.jpg
+
+  fonts:
+    - family: FontLight
+      fonts:
+        - asset: fonts/Nexa-Light.otf
+    - family: FontRegular
+      fonts:
+        - asset: fonts/Nexa-Regular.otf
+    - family: FontBold
+      fonts:
+        - asset: fonts/Nexa-Bold.otf
