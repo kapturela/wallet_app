@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wallet_app/Shared/Widgets/background_screen.dart';
 import 'package:wallet_app/Wallet/Bloc/bloc_wallet.dart';
-import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:wallet_app/Cryptos/ui/screens/list_cryptos.dart';
 
 class CreateWallet extends StatefulWidget {
   @override
@@ -13,14 +13,23 @@ class CreateWallet extends StatefulWidget {
 }
 
 class _CreateWallet extends State<CreateWallet> {
-  BlocWallet blocWallet;
+  BlocWallet blocWallet = BlocWallet();
+  bool _isChecked = false;
+  String _seed = BlocWallet.mnemonic();
 
   @override
   Widget build(BuildContext context) {
     blocWallet = BlocWallet();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Create Wallet"),
+        backgroundColor: Color.fromRGBO(32, 39, 101, 1),
+        title: Text(
+          "CREAR UNA BILLETERA",
+          style: TextStyle(
+            fontFamily: "Fontbold",
+            fontSize: 14
+          ),
+        ),
       ),
       body: Container(
         margin: EdgeInsets.only(
@@ -33,16 +42,72 @@ class _CreateWallet extends State<CreateWallet> {
               children: <Widget>[
                 _Title(),
                 _Advertencia(),
-                _Mnemonic()
+                _Mnemonic(_seed),
+                Container(
+                  padding: EdgeInsets.all(4),
+                  margin: EdgeInsets.only(top: 20),
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        "Ha resguardado la frase de recuperación?",
+                        style: TextStyle(
+                          fontFamily: "FontNormal"
+                        ),
+                      ),
+                      Checkbox(
+                        value: _isChecked,
+                        onChanged: (val) {
+                          setState(() {
+                            _isChecked = val;
+                          });
+                        },
+                      )
+                    ],
+                  )
+
+                ),
               ],
             )
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: next,
+        label: Text('Continuar'),
+        icon: Icon(Icons.navigate_next),
+        backgroundColor: Color.fromRGBO(32, 39, 101, 1),
+      ),
     );
   }
 
-  Widget _Mnemonic() {
+  void next() {
+    if(!_isChecked) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Crear Wallet"),
+            content: Text("Confirme haber resguardado su frase de recuperación"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("Aceptar"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        }
+      );
+      return;
+    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ListCryptos()),
+    );
+  }
+
+  Widget _Mnemonic(String _seed) {
     return Container(
       padding: EdgeInsets.only(
         top:14,
@@ -54,7 +119,7 @@ class _CreateWallet extends State<CreateWallet> {
         top: 20,
       ),
       child: Text(
-          blocWallet.mnemonic(),
+        _seed,
         style: TextStyle(
           color: Colors.indigo,
           fontSize: 20,
@@ -74,6 +139,7 @@ class _CreateWallet extends State<CreateWallet> {
       ),
     );
   }
+
   Widget _Advertencia() {
     return Container(
       padding: EdgeInsets.all(4),
@@ -85,7 +151,7 @@ class _CreateWallet extends State<CreateWallet> {
             "recuperar sus fondos. La persona que posee esta frase posee sus fondos.",
         style: TextStyle(
           fontSize: 16,
-          fontFamily: "FontLight",
+          fontFamily: "FontNormal",
           color: Colors.black54,
         ),
       ),
