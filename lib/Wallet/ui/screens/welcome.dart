@@ -32,14 +32,14 @@ class Welcome extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    ButtonPrimary(titleButton: "Crear Billetara", top: 20,  onPressed: () {
+                    ButtonPrimary(titleButton: "CREAR UNA BILLETERA", top: 20,  onPressed: () {
                       print("next");
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => CreateWallet()),
                       );
                     },),
-                    ButtonPrimary(titleButton: "Restaurar Billetara", top: 10, onPressed: () {}),
+                    ButtonPrimary(titleButton: "RESTAURAR BILLETERA", top: 10, onPressed: () {}),
                   ],
                 ),
               ),

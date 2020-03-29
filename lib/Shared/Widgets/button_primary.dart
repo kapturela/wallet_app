@@ -33,12 +33,13 @@ class _ButtonPrimary extends State<ButtonPrimary> {
             borderRadius: BorderRadius.circular(6.0),
             gradient: LinearGradient(
                 colors: [
-                  Color.fromRGBO(23, 26, 60, 1),
-                  Color.fromRGBO(40, 4, 137, 0.7),
+                  Color.fromRGBO(32, 39, 101, 1),
+                  Color.fromRGBO(46, 57, 136, 1),
+
                 ],
-                begin: FractionalOffset(0.1, 1),
+                begin: FractionalOffset(0.2, 0.0),
+                end: FractionalOffset(1.0, 0.6),
                 stops: [0.0, 0.6],
-                tileMode: TileMode.clamp
 
             )
 
@@ -48,8 +49,8 @@ class _ButtonPrimary extends State<ButtonPrimary> {
             widget.titleButton,
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 18.0,
-                fontFamily: "FontRegular",
+                fontSize: 16.0,
+                fontFamily: "FontNormal",
                 color: Colors.white
             ),
 

@@ -44,7 +44,7 @@ flutter:
   assets:
     - assets/images/bg.jpg
     - assets/images/ISOTIPO.png
-    - assets/images/
+    - assets/images/logo.png
   fonts:
     - family: FontLight
       fonts:
@@ -55,3 +55,6 @@ flutter:
     - family: FontBold
       fonts:
         - asset: fonts/Nexa-Bold.otf
+    - family: FontNormal
+      fonts:
+        - asset: fonts/Raleway-Medium.ttf
