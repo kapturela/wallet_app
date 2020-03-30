@@ -13,13 +13,22 @@ class CreateWallet extends StatefulWidget {
 }
 
 class _CreateWallet extends State<CreateWallet> {
-  BlocWallet blocWallet = BlocWallet();
+  final BlocWallet blocWallet = BlocWallet();
+  final String seed = BlocWallet.mnemonic();
   bool _isChecked = false;
-  String _seed = BlocWallet.mnemonic();
+
+
+  final controllerTextPass = TextEditingController();
+
+  @override
+  void dispose() {
+    // Limpia el controlador cuando el Widget se descarte
+    controllerTextPass.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    blocWallet = BlocWallet();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(32, 39, 101, 1),
@@ -42,7 +51,8 @@ class _CreateWallet extends State<CreateWallet> {
               children: <Widget>[
                 _Title(),
                 _Advertencia(),
-                _Mnemonic(_seed),
+                _Mnemonic(seed),
+                InputPassword(),
                 Container(
                   padding: EdgeInsets.all(4),
                   margin: EdgeInsets.only(top: 20),
@@ -77,33 +87,6 @@ class _CreateWallet extends State<CreateWallet> {
         icon: Icon(Icons.navigate_next),
         backgroundColor: Color.fromRGBO(32, 39, 101, 1),
       ),
-    );
-  }
-
-  void next() {
-    if(!_isChecked) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Crear Wallet"),
-            content: Text("Confirme haber resguardado su frase de recuperación"),
-            actions: <Widget>[
-              FlatButton(
-                child: Text("Aceptar"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
-          );
-        }
-      );
-      return;
-    }
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => ListCryptos()),
     );
   }
 
@@ -158,5 +141,57 @@ class _CreateWallet extends State<CreateWallet> {
     );
   }
 
+  Widget InputPassword() {
+
+    return Container(
+      padding: EdgeInsets.all(4),
+      margin: EdgeInsets.only(top: 30),
+      child: TextField(
+        controller: controllerTextPass,
+        obscureText: true,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'Crear una contraseña para autorizar tus retiros',
+        ),
+      ),
+    );
+  }
+
+  void next() async{
+    if(!_isChecked) {
+      shwowMessage("Confirme que usted realizó el resguardado su frase de recuperación.");
+      return;
+    }
+    if(controllerTextPass.text.trim() == "") {
+      shwowMessage("Se recomienda que cree una contraseña para autorizar retiros de su billetera.");
+    }
+    var id = await blocWallet.createWallet(seed, controllerTextPass.text.trim());
+    if(id > 0) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ListCryptos()),
+      );
+    }
+  }
+
+  shwowMessage(String message) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Crear Wallet"),
+            content: Text(message),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("Aceptar"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        }
+    );
+  }
 
 }

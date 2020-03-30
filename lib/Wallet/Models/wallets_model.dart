@@ -47,8 +47,22 @@ class WalletsModel extends DatabaseHelper implements DataBaseObject  {
 
   @override
   Future<int> saveObject() async{
-    Database db = await this.database;
-    return await db.insert('wallet', toMap());
+    Database db = await database;
+    try {
+      return await db.insert('wallet', toMap());
+    }catch(e) {
+      await _createTable();
+      saveObject();
+    }
+
+  }
+
+  Future<bool> _createTable() async {
+    Database db = await database;
+    var a =  db.execute(
+      "CREATE TABLE wallet(id INTEGER PRIMARY KEY, seed TEXT, password TEXT)",
+    );
+    return true;
   }
 
 }

@@ -10,13 +10,18 @@ class BlocWallet implements Bloc {
   final _existeWallet = StreamController<bool>();
   Stream<bool> get exist => _existeWallet.stream;
   void existWallet() {
-    var data = _walletModel.getObject(1);
-    print(data);
+    /*var data = _walletModel.getObject(1);
+    print(data);*/
     _existeWallet.sink.add(true);
   }
 
   static String mnemonic() {
     return bip39.generateMnemonic();
+  }
+
+  Future<int> createWallet(String seed, String password) async{
+    _walletModel.insertObject(seed, password);
+    return await _walletModel.saveObject();
   }
 
   @override

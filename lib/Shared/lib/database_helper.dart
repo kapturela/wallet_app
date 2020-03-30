@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:path/path.dart';
+import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper{
@@ -22,15 +23,9 @@ class DatabaseHelper{
   }
 
   Future<Database> _initializeDatabase() async {
-    var directory = await getDatabasesPath();
-    String path = join(directory, 'kw.db');
-    Database database = await openDatabase(path, version: 1);
+    Database database = await openDatabase(
+      join(await getDatabasesPath(), 'kature.db'), version: 1);
     return database;
-  }
-
-  Future<int> insert(String table, Map data) async {
-    Database db = await this.database;
-    return await db.insert(table, data);
   }
 
 }
