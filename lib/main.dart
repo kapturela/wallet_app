@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_app/Wallet/ui/screens/welcome.dart';
+import 'package:wallet_app/Wallet/ui/screens/welcome_screen.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:wallet_app/Wallet/Bloc/bloc_wallet.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,13 +9,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return BlocProvider(
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        home: Welcome(),
+      ),
+      bloc: BlocWallet(),
+    );
+    /*return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
       home: Welcome(),
-    );
+    );*/
   }
 }
 
