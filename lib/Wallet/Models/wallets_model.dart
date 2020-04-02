@@ -7,7 +7,7 @@ class WalletsModel extends DatabaseHelper implements DataBaseObject  {
   String seed;
   String password;
 
-  WalletsModel();
+  WalletsModel({this.id, this.seed, this.password});
 
   Map<String,dynamic> toMap() {
     var map = <String, dynamic> {
@@ -33,13 +33,11 @@ class WalletsModel extends DatabaseHelper implements DataBaseObject  {
   @override
   Future<WalletsModel> getObject(int id) async {
     Database db = await this.database;
-
     try {
       List<Map> maps = await db.query('wallet',
           columns: ['id', 'seed', 'password'],
           where: "id = ?",
           whereArgs: [id] );
-      print(maps.length );
       if(maps.length > 0){
         return WalletsModel.fromMap(maps.first);
       }else{

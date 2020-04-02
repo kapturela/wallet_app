@@ -3,16 +3,16 @@ import 'package:rxdart/rxdart.dart';
 import 'dart:async';
 // import 'package:bitcoin_flutter/bitcoin_flutter.dart';
 import 'package:bip39/bip39.dart' as bip39;
+import 'package:sqflite/sqflite.dart';
+import 'package:wallet_app/Shared/lib/database_helper.dart';
 import 'package:wallet_app/Wallet/Models/wallets_model.dart';
 
 class BlocWallet implements Bloc {
   final _walletModel = WalletsModel();
   final _existeWallet = StreamController<bool>();
   Stream<bool> get exist => _existeWallet.stream;
-  void existWallet() {
-    var data = _walletModel.getObject(1);
-    print(data);
-    print("la data de arriba");
+  void existWallet() async {
+    WalletsModel data = await _walletModel.getObject(1);
     if (data  == null) {
       _existeWallet.sink.add(false);
     } else {
@@ -21,6 +21,7 @@ class BlocWallet implements Bloc {
     }
 
   }
+
 
   static String mnemonic() {
     return bip39.generateMnemonic();
