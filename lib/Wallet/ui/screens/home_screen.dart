@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
             margin: EdgeInsets.only(top: 70),
-            height: 359,
+            height: 340,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: <Widget>[

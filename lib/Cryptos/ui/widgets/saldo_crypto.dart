@@ -12,9 +12,8 @@ class SaldoCrypto extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      margin: EdgeInsets.only(top: 10, right: 10),
-      height: 280,
-      width: 320,
+      margin: EdgeInsets.only(top: 10, right: 6),
+      width: 330,
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -34,8 +33,8 @@ class SaldoCrypto extends StatelessWidget {
           Row(
             children: <Widget>[
               Container(
-                height: 38,
-                width: 38,
+                height: 30,
+                width: 30,
                 margin: EdgeInsets.only(right: 20),
                 decoration: BoxDecoration(
                   image: DecorationImage(
@@ -49,7 +48,7 @@ class SaldoCrypto extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontFamily: "FontBold",
-                  fontSize: 20,
+                  fontSize: 16,
                   color: Colors.white,
                 ),
               ),
@@ -85,14 +84,14 @@ class SaldoCrypto extends StatelessWidget {
             textAlign: TextAlign.left,
             style: TextStyle(
               color: Colors.white,
-              fontSize: 13
+              fontSize: 11
             ),
           ),
           Text(
             "USD 23876,87",
             style: TextStyle(
               color: Colors.white,
-              fontSize: 20,
+              fontSize: 16,
               fontFamily: "FontBold",
             ),
           ),

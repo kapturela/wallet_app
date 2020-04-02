@@ -20,8 +20,8 @@ class _BtnEnviarRecibir extends State<BtnEnviarRecibir> {
     return InkWell(
       onTap: null,
       child: Container(
-        margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.only(top: 0, left: 10, right: 10),
+        padding: EdgeInsets.only(top:6, left: 10, right: 10, bottom: 6),
         decoration: BoxDecoration(
           color: Color.fromRGBO(229, 100, 33, 1),
           borderRadius: BorderRadius.all(Radius.circular(6))
