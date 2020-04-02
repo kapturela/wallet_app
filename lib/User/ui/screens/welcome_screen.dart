@@ -6,6 +6,7 @@ import 'package:wallet_app/Shared/Widgets/logo.dart';
 import 'package:wallet_app/Wallet/Bloc/bloc_wallet.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:wallet_app/Wallet/ui/screens/home_screen.dart';
+import 'package:wallet_app/copertino_navigation_bar.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -33,7 +34,7 @@ class _Welcome extends State<Welcome> {
       // ignore: missing_return
       builder: (BuildContext, AsyncSnapshot snapshot ) {
         if(snapshot.data) {
-          return Home();
+          return CopertinoNavigationBar();
         } else {
           return _welcomeUI();
         }

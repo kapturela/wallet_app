@@ -9,9 +9,9 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      drawer: NavDrawer(),
+      // drawer: NavDrawer(),
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Color.fromRGBO(32, 39, 101, 1),
         title: Text("Billetera"),
       ),
@@ -21,7 +21,7 @@ class Home extends StatelessWidget {
           SaldoTotal(),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
-            margin: EdgeInsets.only(top: 140),
+            margin: EdgeInsets.only(top: 40),
             height: 254,
             child: ListView(
               scrollDirection: Axis.horizontal,

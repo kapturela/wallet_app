@@ -5,7 +5,7 @@ class SaldoTotal extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      margin: EdgeInsets.only(top: 110),
+      margin: EdgeInsets.only(top: 10),
       padding: EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
