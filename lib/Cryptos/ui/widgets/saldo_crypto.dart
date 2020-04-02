@@ -13,8 +13,8 @@ class SaldoCrypto extends StatelessWidget {
     // TODO: implement build
     return Container(
       margin: EdgeInsets.only(top: 10, right: 6),
-      width: 330,
-      padding: EdgeInsets.all(20),
+      width: 340,
+      padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
         gradient: LinearGradient(
@@ -55,17 +55,11 @@ class SaldoCrypto extends StatelessWidget {
             ],
           ),
           getSaldo(),
-          Charts(),
+          //Charts(),
           Container(
             margin: EdgeInsets.only(top: 10),
             child: (
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  BtnEnviarRecibir(titulo: "Enviar"),
-                  BtnEnviarRecibir(titulo: "Recibir",)
-                ],
-              )
+                BtnEnviarRecibir(titulo: "Enviar")
             ),
           )
         ],
@@ -76,6 +70,13 @@ class SaldoCrypto extends StatelessWidget {
   Widget getSaldo() {
     return Container(
       margin: EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(bottom: 10),
+      width: 300,
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: Colors.white10)
+        )
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
