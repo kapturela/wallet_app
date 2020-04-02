@@ -10,9 +10,16 @@ class BlocWallet implements Bloc {
   final _existeWallet = StreamController<bool>();
   Stream<bool> get exist => _existeWallet.stream;
   void existWallet() {
-    /*var data = _walletModel.getObject(1);
-    print(data);*/
-    _existeWallet.sink.add(true);
+    var data = _walletModel.getObject(1);
+    print(data);
+    print("la data de arriba");
+    if (data  == null) {
+      _existeWallet.sink.add(false);
+    } else {
+      print("si tiene");
+      _existeWallet.sink.add(true);
+    }
+
   }
 
   static String mnemonic() {

@@ -151,7 +151,7 @@ class _CreateWallet extends State<CreateWallet> {
         obscureText: true,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
-          labelText: 'Crear una contraseña para autorizar tus retiros',
+          labelText: 'Contraseña para autorizar retiros',
         ),
       ),
     );

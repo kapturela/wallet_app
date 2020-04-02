@@ -5,6 +5,7 @@ import 'package:wallet_app/Wallet/ui/screens/create_wallet_screen.dart';
 import 'package:wallet_app/Shared/Widgets/logo.dart';
 import 'package:wallet_app/Wallet/Bloc/bloc_wallet.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:wallet_app/User/ui/screens/home_screen.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -29,8 +30,11 @@ class _Welcome extends State<Welcome> {
   Widget _handleWallet(){
     return StreamBuilder(
       stream: blocWallet.exist,
+      // ignore: missing_return
       builder: (BuildContext, AsyncSnapshot snapshot ) {
         if(snapshot.data) {
+          return Home();
+        } else {
           return _welcomeUI();
         }
       },
