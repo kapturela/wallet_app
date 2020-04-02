@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_app/Wallet/ui/screens/welcome_screen.dart';
+import 'package:wallet_app/User/ui/screens/welcome_screen.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:wallet_app/Wallet/Bloc/bloc_wallet.dart';
 
