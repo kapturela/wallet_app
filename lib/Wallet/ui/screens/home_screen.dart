@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wallet_app/Shared/Widgets/background_screen.dart';
 import 'package:wallet_app/Wallet/ui/widgets/nav_drawer.dart';
 import 'package:wallet_app/Cryptos/ui/widgets/saldo_crypto.dart';
+import 'package:wallet_app/Wallet/ui/widgets/saldo_total.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -17,10 +18,11 @@ class Home extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           BackgroundScreen(),
+          SaldoTotal(),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
-            margin: EdgeInsets.only(top: 70),
-            height: 340,
+            margin: EdgeInsets.only(top: 140),
+            height: 254,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: <Widget>[
