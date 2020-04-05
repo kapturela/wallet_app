@@ -62,13 +62,10 @@ flutter:
   fonts:
     - family: FontLight
       fonts:
-        - asset: fonts/Nexa-Light.otf
+        - asset: fonts/Raleway-Light.ttf
     - family: FontRegular
       fonts:
-        - asset: fonts/Nexa-Regular.otf
+        - asset: fonts/Raleway-Medium.ttf
     - family: FontBold
       fonts:
-        - asset: fonts/Nexa-Bold.otf
-    - family: FontNormal
-      fonts:
-        - asset: fonts/Raleway-Medium.ttf
+        - asset: fonts/Raleway-Bold.ttf
