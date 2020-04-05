@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wallet_app/Shared/Widgets/button_primary.dart';
 import 'package:wallet_app/Shared/Widgets/background_screen.dart';
 import 'package:wallet_app/Wallet/ui/screens/create_wallet_screen.dart';
-import 'package:wallet_app/Shared/Widgets/logo.dart';
+import 'package:wallet_app/Shared/Widgets/isotipo.dart';
 import 'package:wallet_app/Wallet/Bloc/bloc_wallet.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:wallet_app/Wallet/ui/screens/home_screen.dart';
@@ -51,7 +51,7 @@ class _Welcome extends State<Welcome> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Logo(height: 90, width: 83, gray: false),
+              Isotipo(height: 90, width: 83, gray: false),
               Text("Bienvenidos \n Kapturela Wallet",
                 textAlign: TextAlign.center,
                 style: TextStyle(
