@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wallet_app/Shared/Widgets/logo.dart';
+import 'package:wallet_app/Shared/Widgets/isotipo.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -18,7 +19,7 @@ class NavDrawer extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Logo(height: 50, width:43, gray: true),
+                      Isotipo(height: 50, width:43, gray: true),
                       Container(
                         margin: EdgeInsets.only(bottom: 20, left: 10),
                         child: Text(

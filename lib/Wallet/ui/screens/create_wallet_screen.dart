@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wallet_app/Shared/Widgets/background_screen.dart';
 import 'package:wallet_app/Wallet/Bloc/bloc_wallet.dart';
 import 'package:wallet_app/Cryptos/ui/screens/list_cryptos.dart';
+import 'package:wallet_app/Wallet/ui/screens/home_screen.dart';
 
 class CreateWallet extends StatefulWidget {
   @override
@@ -16,7 +17,6 @@ class _CreateWallet extends State<CreateWallet> {
   final BlocWallet blocWallet = BlocWallet();
   final String seed = BlocWallet.mnemonic();
   bool _isChecked = false;
-
 
   final controllerTextPass = TextEditingController();
 
@@ -166,12 +166,12 @@ class _CreateWallet extends State<CreateWallet> {
       shwowMessage("Se recomienda que cree una contraseña para autorizar retiros de su billetera.");
     }
     var id = await blocWallet.createWallet(seed, controllerTextPass.text.trim());
-    if(id > 0) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ListCryptos()),
-      );
-    }
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Home()),
+    );
+
   }
 
   shwowMessage(String message) {

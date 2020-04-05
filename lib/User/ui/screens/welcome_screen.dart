@@ -8,23 +8,22 @@ import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:wallet_app/Wallet/ui/screens/home_screen.dart';
 import 'package:wallet_app/copertino_navigation_bar.dart';
 
-class Welcome extends StatefulWidget {
+class WelcomeScreen extends StatefulWidget {
   @override
   State createState() {
     // TODO: implement createState
-    return _Welcome();
+    return _WelcomeScreen();
   }
 
 }
 
-class _Welcome extends State<Welcome> {
+class _WelcomeScreen extends State<WelcomeScreen> {
   BlocWallet blocWallet;
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     blocWallet = BlocProvider.of(context);
-    blocWallet.existWallet();
     return _handleWallet();
   }
 
@@ -33,7 +32,10 @@ class _Welcome extends State<Welcome> {
       stream: blocWallet.exist,
       // ignore: missing_return
       builder: (BuildContext, AsyncSnapshot snapshot ) {
-        if(snapshot.data) {
+        if(snapshot.data == null) {
+          return Container(child: Center(child: CircularProgressIndicator()));
+
+        }else if(snapshot.data) {
           return CopertinoNavigationBar();
         } else {
           return _welcomeUI();

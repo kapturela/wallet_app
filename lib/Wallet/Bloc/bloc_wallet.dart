@@ -6,18 +6,30 @@ import 'package:bip39/bip39.dart' as bip39;
 import 'package:sqflite/sqflite.dart';
 import 'package:wallet_app/Shared/lib/database_helper.dart';
 import 'package:wallet_app/Wallet/Models/wallets_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BlocWallet implements Bloc {
   final _walletModel = WalletsModel();
-  final _existeWallet = StreamController<bool>();
-  Stream<bool> get exist => _existeWallet.stream;
-  void existWallet() async {
+  Stream<bool> get exist => Stream.fromFuture(existWallet());
+
+  Stream<bool> get isLoggedIn => Stream.fromFuture(autoLogIn());
+  Future<bool> autoLogIn() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String userEmail = prefs.getString('email');
+
+    if (userEmail != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> existWallet() async {
     WalletsModel data = await _walletModel.getObject(1);
     if (data  == null) {
-      _existeWallet.sink.add(false);
+      return false;
     } else {
-      print("si tiene");
-      _existeWallet.sink.add(true);
+      return true;
     }
 
   }
